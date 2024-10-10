@@ -5,11 +5,14 @@ import java.util.LinkedList;
 public class Department {
     private String nameDepartment;
     private int size;
-    private LinkedList<Employee> employees = new LinkedList<Employee>();
+    private LinkedList<Worker> workers = new LinkedList<Worker>();
 
-    public Department(String nameDepartment, int size) {
+    public Department(String nameDepartment) {
         this.nameDepartment = nameDepartment;
-        this.size = size;
+
+    }
+
+    public Department() {
     }
 
     public String getNameDepartment() {
@@ -24,16 +27,24 @@ public class Department {
         return size;
     }
 
+    public int size(){
+        return workers.size();
+    }
+
     public void setSize(int size) {
         this.size = size;
     }
 
-    public LinkedList<Employee> getEmployees() {
-        return employees;
+    public LinkedList<Worker> getEmployees() {
+        return workers;
     }
 
-    public void setEmployees(LinkedList<Employee> employees) {
-        this.employees = employees;
+    public void setEmployees(LinkedList<Worker> workers) {
+        this.workers = workers;
+    }
+
+    public void addWorker(Worker worker) {
+        workers.add(worker);
     }
 
     @Override
@@ -41,7 +52,8 @@ public class Department {
         return getClass().getName() +
                 "nameDepartment='" + nameDepartment + '\'' +
                 ", size=" + size +
-                ", employees=" + employees +
+                ", employees=" + workers +
                 '}';
     }
+
 }

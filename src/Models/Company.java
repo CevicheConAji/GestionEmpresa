@@ -49,7 +49,7 @@ public class Company implements ICompany, IWorker {
     @Override
     public String toString() {
         return getClass().getName()+
-                " nameCompany='" + nameCompany + '\'' +
+                "\nnameCompany='" + nameCompany + '\'' +
                 ", companyCIF='" + companyCIF + '\'' +
                 ", departments=" + departments +
                 "}\n";
@@ -73,7 +73,7 @@ public class Company implements ICompany, IWorker {
     public void getDataDepartment(String nameDepart) {
         for (Department department : departments) {
             if (department.getNameDepartment().equals(nameDepart)) {
-                System.out.println(department);
+                System.out.print(department);
             }
         }
     }
@@ -107,9 +107,10 @@ public class Company implements ICompany, IWorker {
     }
 
     @Override
-    public LinkedList<Department> getDepartmentsFewestWorker(String workerNIF) {
+    public LinkedList<Department> getDepartmentsFewestWorker() {
         LinkedList<Department> fewestWorkers = new LinkedList<>();
-        int fewestNum = getDepartmentsMostWorkers().size();
+        int fewestNum = departments.size();
+
         for (Department department : departments) {
             if(department.getEmployees().size() < fewestNum) {
                 fewestWorkers.clear();

@@ -27,9 +27,6 @@ public class Department {
         return size;
     }
 
-    public int size(){
-        return workers.size();
-    }
 
     public void setSize(int size) {
         this.size = size;
@@ -45,15 +42,16 @@ public class Department {
 
     public void addWorker(Worker worker) {
         workers.add(worker);
+        size++;
     }
 
     @Override
     public String toString() {
         return getClass().getName() +
-                "nameDepartment='" + nameDepartment + '\'' +
+                "\nnameDepartment='" + nameDepartment +
                 ", size=" + size +
-                ", employees=" + workers +
-                '}';
+                ", employees = \n" + workers +
+                "}";
     }
 
 }

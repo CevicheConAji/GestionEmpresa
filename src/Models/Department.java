@@ -50,8 +50,8 @@ public class Department {
         return getClass().getName() +
                 "\nnameDepartment='" + nameDepartment +
                 ", size=" + size +
-                ", employees = \n" + workers +
-                "}";
+                ", employees = " + workers +
+                "}\n";
     }
 
 }

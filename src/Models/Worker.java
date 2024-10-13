@@ -73,10 +73,10 @@ public class Worker implements Comparable<Worker>{
     @Override
     public String toString() {
         return getClass().getName() +
-                " employeeNIF=" + workerNIF +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", position='" + position + '\'' +
+                "employeeNIF=" + workerNIF +
+                ", firstName='" + firstName +
+                ", lastName='" + lastName +
+                ", position='" + position +
                 "}\n";
     }
 

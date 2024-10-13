@@ -2,6 +2,8 @@ package Models;
 
 import Interface.ICompany;
 import Interface.IWorker;
+import Exception.DepartmentNotFoundException;
+import Exception.EmployeeNotFoundException;
 
 import java.util.LinkedList;
 
@@ -56,36 +58,52 @@ public class Company implements ICompany, IWorker {
     }
 
     @Override
-    public LinkedList<Worker> getEmployeeDepartment(String nameDepart) {
-        LinkedList<Worker> employees = new LinkedList<>();
+    public LinkedList<Worker> getEmployeeDepartment(String nameDepart) throws DepartmentNotFoundException {
+        LinkedList<Worker> employees = null;
 
-        for (Department department : departments) {
+        for(Department department : departments) {
             if (department.getNameDepartment().equals(nameDepart)) {
-                for (Worker w : department.getEmployees()){
-                    employees.add(w);
-                }
+                employees = department.getEmployees();
+
             }
         }
+        if(employees == null)
+            throw new DepartmentNotFoundException(nameDepart);
+        else System.out.println("***EMPLOYERS "+nameDepart+"+***");
+
         return employees;
     }
 
     @Override
-    public void getDataDepartment(String nameDepart) {
+    public void getDataDepartment(String nameDepart) throws DepartmentNotFoundException {
+        boolean found = false;
+
         for (Department department : departments) {
             if (department.getNameDepartment().equals(nameDepart)) {
+                found = true;
                 System.out.print(department);
             }
         }
+        if(!found)
+            throw new DepartmentNotFoundException(nameDepart);
+
+
     }
 
     @Override
-    public void getDataWorkerNIF(String workerNIF) {
+    public void getDataWorkerNIF(String workerNIF) throws EmployeeNotFoundException {
+        boolean found = false;
+
         for(Department department : departments) {
             for(Worker w : department.getEmployees()) {
                 if(w.getWorkerNIF().equals(workerNIF)) {
+                    found = true;
                     System.out.println(w);
                 }
             }
+        }
+        if(!found){
+            throw new EmployeeNotFoundException(workerNIF);
         }
     }
 

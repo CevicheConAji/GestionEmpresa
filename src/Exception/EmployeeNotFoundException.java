@@ -13,6 +13,6 @@ public class EmployeeNotFoundException extends Exception {
 
     @Override
     public String getMessage() {
-        return "Employee with NIF " + employeeNIF + " not found";
+        return "\nEmployee with NIF " + employeeNIF + " not found\n";
     }
 }

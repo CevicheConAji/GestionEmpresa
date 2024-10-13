@@ -11,6 +11,6 @@ public class DepartmentNotFoundException extends Exception {
 
     @Override
     public String getMessage() {
-        return "No se encontro el departamento: " + departmentName;
+        return "\nDepartment " + departmentName +" not found\n";
     }
 }

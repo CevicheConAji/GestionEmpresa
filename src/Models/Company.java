@@ -51,15 +51,16 @@ public class Company implements ICompany, IWorker {
     @Override
     public String toString() {
         return getClass().getName()+
-                "\nnameCompany='" + nameCompany + '\'' +
-                ", companyCIF='" + companyCIF + '\'' +
-                ", departments=" + departments +
+                "\nnameCompany='" + nameCompany +
+                ", companyCIF='" + companyCIF +
+                ", departments=\n" + departments +
                 "}\n";
     }
 
     @Override
     public LinkedList<Worker> getEmployeeDepartment(String nameDepart) throws DepartmentNotFoundException {
         LinkedList<Worker> employees = null;
+        System.out.println("***EMPLOYERS "+nameDepart+"+***");
 
         for(Department department : departments) {
             if (department.getNameDepartment().equals(nameDepart)) {
@@ -67,9 +68,9 @@ public class Company implements ICompany, IWorker {
 
             }
         }
-        if(employees == null)
+        if(employees == null) {
             throw new DepartmentNotFoundException(nameDepart);
-        else System.out.println("***EMPLOYERS "+nameDepart+"+***");
+        }
 
         return employees;
     }
@@ -77,6 +78,7 @@ public class Company implements ICompany, IWorker {
     @Override
     public void getDataDepartment(String nameDepart) throws DepartmentNotFoundException {
         boolean found = false;
+        System.out.println("***DATA EMPLOYERS "+nameDepart+"+***");
 
         for (Department department : departments) {
             if (department.getNameDepartment().equals(nameDepart)) {
@@ -84,15 +86,16 @@ public class Company implements ICompany, IWorker {
                 System.out.print(department);
             }
         }
-        if(!found)
+        if(!found) {
             throw new DepartmentNotFoundException(nameDepart);
-
+        }
 
     }
 
     @Override
     public void getDataWorkerNIF(String workerNIF) throws EmployeeNotFoundException {
         boolean found = false;
+        System.out.println("***EMPLOYERS "+workerNIF+"+***");
 
         for(Department department : departments) {
             for(Worker w : department.getEmployees()) {
@@ -102,7 +105,7 @@ public class Company implements ICompany, IWorker {
                 }
             }
         }
-        if(!found){
+        if(!found) {
             throw new EmployeeNotFoundException(workerNIF);
         }
     }
@@ -111,6 +114,8 @@ public class Company implements ICompany, IWorker {
     public LinkedList<Department> getDepartmentsMostWorkers() {
         LinkedList<Department> mostWorkers = new LinkedList<>();
         int numeroMayor = 0;
+
+        System.out.println("***DEPARTMENTS MOST WORKERS***");
 
         for (Department department : departments) {
             if(department.getEmployees().size() > numeroMayor) {
@@ -128,7 +133,7 @@ public class Company implements ICompany, IWorker {
     public LinkedList<Department> getDepartmentsFewestWorker() {
         LinkedList<Department> fewestWorkers = new LinkedList<>();
         int fewestNum = departments.size();
-
+        System.out.println("***DEPARTMENTS FEWEST WORKERS***");
         for (Department department : departments) {
             if(department.getEmployees().size() < fewestNum) {
                 fewestWorkers.clear();
